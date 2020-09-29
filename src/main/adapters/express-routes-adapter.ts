@@ -3,7 +3,6 @@ import { Controller, HttpRequest } from '../../presentation/protocols'
 
 export const adaptRoute = (controller: Controller) => {
   return async (req: Request, res: Response) => {
-    console.log(req.body)
     const httpRequest: HttpRequest = {
       body: req.body
     }
