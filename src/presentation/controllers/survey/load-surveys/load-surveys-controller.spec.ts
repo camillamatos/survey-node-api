@@ -1,5 +1,6 @@
 import { SurveyModel, LoadSurveys } from './load-surveys-controller-protocols'
 import { LoadSurveysController } from './laod-surveys-controller'
+import { ok } from '../../../helpers/http/http-helper'
 import MockDate from 'mockdate'
 
 interface SutTypes {
@@ -63,5 +64,12 @@ describe('LoadSurveys Controller', () => {
     await sut.handle({})
 
     expect(loadSpy).toHaveBeenCalled()
+  })
+
+  test('Should return 200 on success', async () => {
+    const { sut } = makeSut()
+    const httpResponse = await sut.handle({})
+
+    expect(httpResponse).toEqual(ok(makeFakeSurveys()))
   })
 })
